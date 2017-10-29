@@ -1,0 +1,17 @@
+version: '3.3'
+
+services:
+  db:
+    image: postgres:10
+    ports:
+      - 5432:5432
+    volumes:
+      - db_data:/var/lib/postgresql/data
+      - ./docker/db/:/docker-entrypoint-initdb.d/
+    environment:
+      - POSTGRES_PASSWORD=example
+      - POSTGRES_USER=maint_usr
+      - POSTGRES_DB=jooqdemo
+
+volumes:
+  db_data:
